@@ -13,6 +13,10 @@ jobs:
 - job: Build
   displayName: 'Build and Publish Artifact'
   steps:
+  - task: UseJavaVersion@0
+    inputs:
+      version: '17'  # Specify the desired Java version
+      addToPath: true  # Add Java to the system PATH
   - task: UseDotNet@2
     inputs:
       version: '3.x'
@@ -24,4 +28,3 @@ jobs:
       pathtoPublish: './target'
       artifactName: 'drop'
       publishLocation: 'container'
-
